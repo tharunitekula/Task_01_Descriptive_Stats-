@@ -1,0 +1,9 @@
+# Findings
+
+This dataset does not appear to be the intended political advertising dataset. Instead, the file currently being analyzed is being read as a very small one-column dataset with 11 rows, and the values look like notebook or kernel metadata such as `"shell_port"`, `"iopub_port"`, `"stdin_port"`, `"control_port"`, and `"hb_port"`. That means the current input file is likely not the CSV from the assignment, or it was exported in a way that preserved only metadata rather than the actual dataset content.
+
+Because of that, the analysis results are dominated by data structure problems rather than meaningful substantive patterns. The pure Python script identifies one categorical column with 11 unique values and no missing values, while the Pandas script shows a shape of `(11, 1)` and reports the single column as `object`-typed but unable to produce useful numeric summaries. In practice, this means there is no real evidence yet about spending, candidate mentions, organization behavior, or timing patterns in political advertising.
+
+The most important finding from this run is a data quality one: the input file is not in the expected format for the assignment. A real political ads dataset should have many columns and enough structure to support descriptive statistics across numeric, categorical, and date fields. Here, both scripts reveal that the file is either the wrong file or has been corrupted during download or export.
+
+This is still a useful result because it shows why exploratory data analysis matters. Before interpreting any statistics, I need to confirm that the dataset is actually the correct one, contains the expected columns, and loads properly in both Python and Pandas. Once the correct CSV is used, the same scripts should produce meaningful results about spend, candidate mentions, dates, organizations, and missing values.
